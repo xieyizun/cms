@@ -1,0 +1,149 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2016-04-13 14:27:31 +0800
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (2ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (13.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateUsers (20160413072731)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(25) NOT NULL, "name" varchar(25) NOT NULL, "password_digest" varchar(255) NOT NULL, "remember_token" varchar(16) NOT NULL, "is_admin" boolean DEFAULT 'f' NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "users_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "users_name" ON "users" ("name")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "users_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20160413072731')
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateArticles (20160413072953)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer DEFAULT 0 NOT NULL, "article_category_id" integer DEFAULT 0 NOT NULL, "title" varchar(255) DEFAULT '' NOT NULL, "content" text DEFAULT '' NOT NULL, "view_count" integer DEFAULT 0 NOT NULL, "created_on" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "articles_user_id" ON "articles" ("user_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "articles_category_id" ON "articles" ("article_category_id")[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20160413072953')
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateArticleCategories (20160413073242)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(30) DEFAULT '' NOT NULL, "description" text) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20160413073242')
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (130.2ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (110.3ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (4.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (0.3ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Mysql2::Error: All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead: CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (0.3ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Mysql2::Error: All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead: CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (0.3ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Mysql2::Error: All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead: CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (0.2ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Mysql2::Error: All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead: CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (13.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (1.4ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Mysql2::Error: Table 'users' already exists: CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (1626.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (220.3ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (192.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+  [1m[36m (120.1ms)[0m  [1mCREATE INDEX `users_email` ON `users` (`email`)[0m
+  [1m[35m (181.8ms)[0m  CREATE INDEX `users_name` ON `users` (`name`)
+  [1m[36m (165.8ms)[0m  [1mCREATE INDEX `users_remember_token` ON `users` (`remember_token`)[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160413072731')
+Migrating to CreateArticles (20160413072953)
+  [1m[36m (260.0ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (139.9ms)[0m  CREATE INDEX `articles_user_id` ON `articles` (`user_id`)
+  [1m[36m (0.7ms)[0m  [1mCREATE INDEX `articles_category_id` ON `articles` (`article_category_id`)[0m
+Mysql2::Error: Key column 'article_category_id' doesn't exist in table: CREATE  INDEX `articles_category_id` ON `articles` (`article_category_id`)
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateUsers (20160413072731)
+  [1m[36m (481.2ms)[0m  [1mDROP TABLE `users`[0m
+  [1m[35m (0.6ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160413072731'
+  [1m[36m (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (1556.8ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+  [1m[36m (140.8ms)[0m  [1mCREATE INDEX `users_email` ON `users` (`email`)[0m
+  [1m[35m (199.2ms)[0m  CREATE INDEX `users_name` ON `users` (`name`)
+  [1m[36m (182.1ms)[0m  [1mCREATE INDEX `users_remember_token` ON `users` (`remember_token`)[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160413072731')
+Migrating to CreateArticles (20160413072953)
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB[0m
+Mysql2::Error: Table 'articles' already exists: CREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.6ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateUsers (20160413072731)
+  [1m[36m (1549.2ms)[0m  [1mDROP TABLE `users`[0m
+  [1m[35m (0.6ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160413072731'
+  [1m[36m (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+  [1m[35m (416.5ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(50) NOT NULL, `name` varchar(25) NOT NULL, `password_digest` varchar(255) DEFAULT '' NOT NULL, `remember_token` varchar(16) NOT NULL, `is_admin` tinyint(1) DEFAULT 0 NOT NULL) ENGINE=InnoDB
+  [1m[36m (124.5ms)[0m  [1mCREATE INDEX `users_email` ON `users` (`email`)[0m
+  [1m[35m (98.3ms)[0m  CREATE INDEX `users_name` ON `users` (`name`)
+  [1m[36m (265.3ms)[0m  [1mCREATE INDEX `users_remember_token` ON `users` (`remember_token`)[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160413072731')
+Migrating to CreateArticles (20160413072953)
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB[0m
+Mysql2::Error: Table 'articles' already exists: CREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20160413072731)
+Migrating to CreateArticles (20160413072953)
+  [1m[35m (564.5ms)[0m  CREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) DEFAULT 0 NOT NULL, `category_id` int(11) DEFAULT 0 NOT NULL, `title` varchar(255) DEFAULT '' NOT NULL, `content` text DEFAULT '' NOT NULL, `view_count` int(11) DEFAULT 0 NOT NULL, `created_on` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (106.4ms)[0m  [1mCREATE INDEX `articles_user_id` ON `articles` (`user_id`)[0m
+  [1m[35m (202.5ms)[0m  CREATE INDEX `articles_category_id` ON `articles` (`category_id`)
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160413072953')[0m
+Migrating to CreateArticleCategories (20160413073242)
+  [1m[35m (193.7ms)[0m  CREATE TABLE `article_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(50) DEFAULT '' NOT NULL, `description` text) ENGINE=InnoDB
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160413073242')[0m
+  [1m[35m (0.7ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
