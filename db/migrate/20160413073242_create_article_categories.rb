@@ -1,6 +1,7 @@
 class CreateArticleCategories < ActiveRecord::Migration
   def self.up
     create_table :article_categories do |t|
+      t.column :parent_id, :integer
       t.column :name, :string, limit: 50, unique: true, default: "", null: false
       t.column :description, :text
     end

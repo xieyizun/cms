@@ -1,6 +1,8 @@
 class ArticleCategory < ActiveRecord::Base
   attr_accessible :name, :description
 
+  belongs_to :parent, class_name: 'ArticleCategory'
+
   has_many :articles, dependent: :destroy
 
   validates_presence_of :name

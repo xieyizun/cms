@@ -1,0 +1,58 @@
+$(document).ready(function() {
+    $.getJSON("/homes/index.json", function(data, status) {
+
+        var home_ops = $('.navigation > ul');
+        var categories_ul = $('#categories ul');
+        var articles_table = $('#articles table tbody');
+
+        //home operators
+        $.each(data['home_operators'].ops, function (i, item) {
+            home_ops.append('<li value="' + item.id + '">' + item.op + '</li>');
+        });
+
+        $(".navigation > ul > li").not(":first").hover(
+            function() {
+                $(this).addClass('active_nav');
+            },
+            function() {
+                $(this).removeClass('active_nav');
+            }
+        );
+
+       /* //me
+        $(".navigation ul li#me").hover(
+            function() {
+                $(this).find('#me_options').slideDown('slow');
+            },
+            function() {
+                $(this).find('#me_options').slideUp('slow');
+            }
+        );*/
+
+        //articles categories
+        $.each(data['categories'].cgs, function(i, item) {
+            categories_ul.append('<li value="' + item.id + '">' + item.c + '</li>');
+        });
+        $("#categories ul li:first").css('background-color', 'lightblue');
+
+        //articles
+        $.each(data['articles'].articles, function(i, item) {
+            articles_table.append('<tr><td class="title">' + '<a href="#">' + item.title + '</a>' + '</td>' +
+                                      '<td class="time">' + item.time + '</td>' +
+                                      '<td class="author">' + item.author + '</td></tr>');
+        });
+        $('tr:even').not(':first').css('background-color', 'whitesmoke');
+    });
+});
+
+function hover_event(tag_name, class_name) {
+    $(tag_name).hover(
+        function () {
+            $(this).addClass(class_name);
+        },
+        function () {
+            $(this).removeClass(class_name);
+        }
+    );
+}
+

@@ -121,6 +121,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord-mysql2-adapter (v0.0.3, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v3.0.3, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.0.1, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.4, RVM: ruby-1.9.3-p551) [gem]" level="application" />
@@ -138,6 +145,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.4.4, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25.1, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.11.2, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql (v2.9.1, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.3.20, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.5, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="power_assert (v0.2.7, RVM: ruby-1.9.3-p551) [gem]" level="application" />
@@ -145,8 +153,11 @@
     <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.6.1, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-ssl (v1.3.4, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="railties (v3.2.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v11.1.2, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.22, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.3, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.11, RVM: ruby-1.9.3-p551) [gem]" level="application" />

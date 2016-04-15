@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="navigation">
+    <ul id="ops">
+      <li id="me">
+        <label><%= localize_var(:label_login) %></label>
+        <ul id="me_options">
+          <li>
+            <label><%= localize_var(:label_login) %></label>
+          </li>
+          <li>
+            <label><%= localize_var(:label_register) %></label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

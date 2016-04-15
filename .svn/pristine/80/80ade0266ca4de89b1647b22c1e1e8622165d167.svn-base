@@ -1,0 +1,8 @@
+<div class="footer">
+  <div>
+    <p>
+      <%= I18n.t :label_footer %>
+      <a href="#">contact us</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  text-align: center;
+  margin: 0;
+}
+
+.header {
+  overflow: hidden;
+  background-color: black;
+}
+
+.header-ul {
+  list-style: none;
+  text-align: right;
+  margin-right: 50px;
+
+  li {
+    display: inline;
+    padding: 10px;
+  }
+}
+
+li#me {
+  float: right;
+  height: inherit;
+
+  ul#me_options {
+    display: none;
+    list-style: none;
+    position: absolute;
+    background-color: gainsboro;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-left: 0;
+
+    > li {
+      padding: 5px 22px 5px 22px;
+      &:hover {
+        background-color: lightblue;
+      }
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  div {
+    border-top: 1px solid black
+  }
+  p {
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.content {
+  margin: 10px 50px 10px 50px;
+
+}
+
+.navigation {
+  overflow: hidden;
+  background-color: black;
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+  font-size: 1.3em;
+  color: ghostwhite;
+
+  ul#ops {
+    list-style: none;
+    overflow: hidden;
+  }
+  ul#ops > li {
+      display: inline;
+      text-align: center;
+      margin-left: 50px;
+      margin-right: 50px;
+      width: 80px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: ghostwhite;
+    &:hover {
+      color: greenyellow;
+    }
+  }
+}
+
+.container {
+  margin: 40px 0 40px 0;
+
+  ul {
+    list-style: none;
+  }
+
+  div#categories {
+    width: 20%;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+
+    ul {
+      display: none;
+    }
+
+    > ul {
+      padding: 0;
+      > li {
+        text-align: left;
+        background-color: whitesmoke;
+        padding: 20px 10px 10px 10px;
+        border-radius: 5px 5px 5px 5px;
+        &:hover {
+          background-color: lightblue;
+        }
+      }
+    }
+
+    .li_event {
+
+    }
+
+  }
+
+  div#articles {
+    width: 75%;
+    float: right;
+    text-align: center;
+    overflow: hidden;
+
+    table {
+      width: 100%;
+      margin-top: 15px;
+
+      thead {
+        background-color: lightblue;
+        th {
+          border-radius: 5px 5px 0 0;
+          padding: 20px 10px 10px 10px;
+        }
+      }
+
+      td {
+        padding: 20px 10px 10px 10px;
+      }
+
+      .title {
+        width: 60%;
+      }
+      .category {
+        width: 10%;
+      }
+      .time {
+        width: 10%;
+      }
+      .author {
+        width: 10%;
+      }
+    }
+  }
+}
+
+.active_nav {
+  color: greenyellow;
+}
+
+

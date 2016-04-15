@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(:version => 20160413073242) do
 
   create_table "article_categories", :force => true do |t|
-    t.string "name",        :limit => 50, :default => "", :null => false
-    t.text   "description"
+    t.integer "parent_id"
+    t.string  "name",        :limit => 50, :default => "", :null => false
+    t.text    "description"
   end
 
   create_table "articles", :force => true do |t|

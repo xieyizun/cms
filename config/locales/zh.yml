@@ -7,8 +7,29 @@ en:
   label_name: 用户名
   label_email: 邮箱
   label_password: 密码
-  label_password: 密码确认
+  label_password_confirmation: 密码确认
   label_register: 注册
   label_login: 登录
   label_logout: 退出
   label_welcome: 欢迎
+
+  label_search: 搜索
+  label_footer: cms 2016
+  label_category: 文章类别
+
+  label_title: 标题
+  label_category: 类别
+  label_time: 发布时间
+  label_author: 作者
+
+  label_login_name_or_email: 用户名或邮箱
+
+  label_home: 首页
+  label_article_categories: 文章类别管理
+  label_articles: 文章管理
+  label_contact: 联系我们
+
+  field_registe_success_hint: 注册成功
+  field_registe_failure_hint: 注册失败
+  field_login_success_hint: 登录成功
+  field_login_failure_hint: 登录失败

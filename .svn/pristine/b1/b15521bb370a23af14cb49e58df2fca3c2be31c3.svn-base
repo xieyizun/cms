@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+
+  label_name: 'name'
+  label_email: 'email'
+  label_password: 'password'
+  label_password_confirmation: 'password confirmation'
+  label_register: 'register'
+  label_login: 'login'
+  label_logout: 'logout'
+  label_welcome: 'welcome'
+
+  label_search: 'search'
+  label_footer: 'cms 2016'
+  label_category: 'article category'
+
+  label_title: 'title'
+  label_time: 'publish time'
+  label_author: 'author'
+
+  label_login_name_or_email: 'user name or email address'

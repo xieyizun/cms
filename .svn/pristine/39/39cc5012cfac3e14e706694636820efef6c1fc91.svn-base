@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+
+  label_name: 用户名
+  label_email: 邮箱
+  label_password: 密码
+  label_password_confirmation: 密码确认
+  label_register: 注册
+  label_login: 登录
+  label_logout: 退出
+  label_welcome: 欢迎
+
+  label_search: 搜索
+  label_footer: cms 2016
+  label_category: 文章类别
+
+  label_title: 标题
+  label_time: 发布时间
+  label_author: 作者
+
+  label_login_name_or_email: 用户名或邮箱
