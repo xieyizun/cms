@@ -7,9 +7,9 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 
-gem 'mysql'
-gem 'mysql2', '0.3.20'
-gem 'activerecord-mysql2-adapter'
+#gem 'mysql'
+#gem 'mysql2', '0.3.20'
+#gem 'activerecord-mysql2-adapter'
 gem 'rails-i18n'
 # gem 'sprockets-rails'
 # gem 'bootstrap-sass'
@@ -29,7 +29,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby' #, '~> 3.0.0'
 
 gem 'test-unit'
 

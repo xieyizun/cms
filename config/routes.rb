@@ -1,5 +1,6 @@
 Cms::Application.routes.draw do
   root to: 'homes#index', via: :get
+  get "me", to: "homes#me"
   get "home", to: "homes#index", as: "home"
   get "categories", to: "article_categories#index", as: "categories"
   get "articles", to: "articles#index", as: "articles"
@@ -10,7 +11,7 @@ Cms::Application.routes.draw do
   resources :article_categories
 
   match '/signin', to: 'sessions#new', via: :get
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/signout', to: 'sessions#destroy', via: :get
   match '/signup', to: 'users#new', via: :get
 
   # The priority is based upon order of creation:

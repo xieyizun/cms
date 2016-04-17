@@ -34,3 +34,16 @@ en:
   field_registe_failure_hint: 'registe failure'
   field_login_success_hint: 'login successfully'
   field_login_failure_hint: 'login failure'
+  field_signin_first: 'please sign in first'
+  field_logout_successfully: 'logout successfully'
+  label_create_article_successfully: 'create article successfully'
+  label_create_article_failure: 'create article failure'
+
+  label_me: 'Me'
+
+  label_category_name: category name
+  label_category_description: category description
+  label_category_parent: parent category
+
+  label_create: create
+  label_new_article: create new article

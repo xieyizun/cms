@@ -1,3 +1,64 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#new_article {
+  margin: 20px;
+  text-align: right;
+
+  input {
+    width: 20px;
+    height: 18px;
+  }
+}
+
+div#new_article_form {
+  width: 75%;
+  float: right;
+  overflow: hidden;
+
+  text-align: left;
+  padding-left: 50px;
+
+  input {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  textarea {
+    width: 80%;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  div#create_article_button {
+    text-align: right;
+    padding-right: 20px;
+    width: 80%;
+  }
+}
+
+div#title {
+  text-align: left;
+  margin: 20px;
+
+  span {
+    margin-left: 10px;
+    font-size: 1em;
+  }
+}
+
+div#content {
+  text-align: left;
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+
+div#others {
+  text-align: right;
+  div {
+    float: right;
+    margin: 20px;
+  }
+}

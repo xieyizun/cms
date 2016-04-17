@@ -1,10 +1,9 @@
 class ArticleCategoriesController < ApplicationController
   def index
     # id, c_name, children(cgs)
-    categories = { cgs: [
-        {id: 1, c: '类别1', cgs: [{id: 11, c: '类别11', cgs: [{id: 111, c: '类别111'}]}, {id: 12, c: '类别12',  cgs: [{id: 121, c: '类别121'}]}, {id: 13, c: '类别13'}]},
-        {id: 2, c: '类别2'},
-        {id: 3, c: '类别3'}]}
+    cgs = ArticleCategory.get_json_tree_of_categories
+
+    categories = { cgs: cgs }
 
     respond_to do |format|
       format.json { render :json => { :categories => categories } }
@@ -12,7 +11,19 @@ class ArticleCategoriesController < ApplicationController
     end
   end
 
-  def new
+  def create
+    if params[:category][:parent] =~ /^-/
+      params[:category][:parent] = nil
+    end
+
+    if ArticleCategory.create_category_from_params(params[:category][:name], params[:category][:description],
+                                   params[:category][:parent])
+      flash[:success] = localize_var(:field_create_category_successfully_hint)
+      redirect_to categories_path
+    else
+      flash[:failure] = localize_var(:field_create_category_failure_hint)
+      redirect_to categories_path
+    end
   end
 
   def show

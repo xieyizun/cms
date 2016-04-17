@@ -1,25 +1,38 @@
 class HomesController < ApplicationController
-  def index
-    # id, c_name, children(cgs)
-    categories = { cgs: [
-                    {id: 1, c: '类别1', cgs: [{id: 11, c: '类别11', cgs: [{id: 111, c: '类别111'}]}, {id: 12, c: '类别12',  cgs: [{id: 121, c: '类别121'}]}, {id: 13, c: '类别13'}]},
-                    {id: 2, c: '类别2'},
-                    {id: 3, c: '类别3'}]}
 
-    articles = { articles: [
-                    {id: 1, title: 't1', category: 'c1', time: '2015-5-5', author: 'xyz'},
-                    {id: 2, title: 't2', category: 'c1', time: '2024-3-3', author: 'xyz'},
-                    {id: 3, title: 't3', category: 'c1', time: '2015-5-5', author: 'xyz'},
-                    {id: 4, title: 't4', category: 'c1', time: '2024-3-3', author: 'xyz'}]}
-
-    test = { ts: [{id: 1, title: '1221'}]}
+  def me
+    me_options = { current_user: {me: localize_var(:label_me), logout: localize_var(:label_logout)}}
+    login_options = { login_options: {login: localize_var(:label_login), register: localize_var(:label_register)} }
 
     respond_to do |format|
-      format.json { render :json => {
-                                      :categories => categories,
-                                      :articles => articles,
-                                      :test => test
-                                    }
+      format.json {
+        if sign_in?
+          render :json => { :me_options => me_options }
+        else
+          render :json => { :login_options => login_options }
+        end
+      }
+      format.html
+    end
+  end
+
+  def index
+    # id, c_name, children(cgs)
+    cgs = ArticleCategory.get_json_tree_of_categories
+    categories = { cgs: cgs}
+
+    articles = { articles: Article.get_latest_articles }
+
+    me_options = { current_user: {me: localize_var(:label_me), logout: localize_var(:label_logout)}}
+    login_options = { login_options: {login: localize_var(:label_login), register: localize_var(:label_register)} }
+
+    respond_to do |format|
+      format.json {
+        if sign_in?
+          render :json => { :categories => categories, :articles => articles, :me_options => me_options }
+        else
+          render :json => { :categories => categories, :articles => articles, :login_options => login_options }
+        end
       }
       format.html
     end

@@ -22,8 +22,6 @@ GEM
       activesupport (= 3.2.11)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-mysql2-adapter (0.0.3)
-      mysql2
     activeresource (3.2.11)
       activemodel (= 3.2.11)
       activesupport (= 3.2.11)
@@ -55,8 +53,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.11.2)
-    mysql (2.9.1)
-    mysql2 (0.3.20)
     polyglot (0.3.5)
     power_assert (0.2.7)
     rack (1.4.7)
@@ -113,12 +109,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-mysql2-adapter
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby
   coffee-rails (~> 3.2.1)
   jquery-rails
-  mysql
-  mysql2 (= 0.3.20)
   rails (= 3.2.11)
   rails-i18n
   sass-rails (~> 3.2.3)

@@ -1,3 +1,25 @@
 // Place all the styles related to the ArticleCategories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category_articles {
+  text-align: left;
+  width: 70%;
+  float: right;
+
+  div#category_description {
+    textarea {
+      width: 80%;
+      height: 200px;
+    }
+  }
+
+  div#create_category {
+    width: 80%;
+    input {
+      float: right;
+    }
+  }
+  
+  form > div { margin-bottom: 20px; }
+}

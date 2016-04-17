@@ -1,15 +1,12 @@
 class ArticlesController < ApplicationController
   def index
-    categories = { cgs: [
-        {id: 1, c: '类别1', cgs: [{id: 11, c: '类别11', cgs: [{id: 111, c: '类别111'}]}, {id: 12, c: '类别12',  cgs: [{id: 121, c: '类别121'}]}, {id: 13, c: '类别13'}]},
-        {id: 2, c: '类别2'},
-        {id: 3, c: '类别3'}]}
+    cgs = ArticleCategory.get_json_tree_of_categories
 
-    articles = { articles: [
-        {id: 1, title: 't1', category: 'c1', time: '2015-5-5'},
-        {id: 2, title: 't2', category: 'c1', time: '2024-3-3'},
-        {id: 3, title: 't3', category: 'c1', time: '2015-5-5'},
-        {id: 4, title: 't4', category: 'c1', time: '2024-3-3'}]}
+    categories = { cgs: cgs }
+
+    ats_json = Article.get_my_articles(current_user)
+    #to_json会返回字符串，as_json返回实际的json数组
+    articles = { articles: ats_json}
 
     respond_to do |format|
       format.json { render :json => {
@@ -21,9 +18,28 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    puts params
+    created_on = Time.now.localtime
+    article = current_user.articles.new(title: params[:article][:title], content: params[:article][:content],
+                                        category_id: params[:article][:category], created_on: created_on)
+    if article.save
+      flash[:success] = localize_var(:label_create_article_successfully)
+    else
+      flash[:success] = localize_var(:label_create_article_failure)
+    end
+    redirect_to articles_path
   end
 
   def show
+    puts 'dfas'
+    puts request.url
+
+    @article_id = params[:id]
+    article = Article.get_article_by_id(@article_id)
+    respond_to do |format|
+      format.json { render :json => { :article => article } }
+      format.html
+    end
   end
 
   def edit

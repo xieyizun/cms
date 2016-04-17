@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20160413073242) do
     t.integer  "user_id",     :default => 0,  :null => false
     t.integer  "category_id", :default => 0,  :null => false
     t.string   "title",       :default => "", :null => false
-    t.text     "content",                     :null => false
+    t.text     "content",     :default => "", :null => false
     t.integer  "view_count",  :default => 0,  :null => false
     t.datetime "created_on",                  :null => false
   end

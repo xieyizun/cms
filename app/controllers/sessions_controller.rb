@@ -6,8 +6,13 @@ class SessionsController < ApplicationController
       render 'new'
     else
       flash[:success] = localize_var(:field_login_success_hint)
-      set_current_user(user)
+      sign_in(user)
       redirect_to home_path
     end
+  end
+
+  def destroy
+    sign_out
+    redirect_to home_path, notice: localize_var(:field_logout_successfully)
   end
 end

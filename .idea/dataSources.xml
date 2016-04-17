@@ -4,13 +4,8 @@
     <data-source source="LOCAL" name="Rails cms: development" uuid="38411e16-41c4-40fc-b24f-f84a012ea7a1">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://10.250.250.103/xyz_cms</jdbc-url>
-      <explain-plan-config>
-        <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
-      </explain-plan-config>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
@@ -18,20 +13,11 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
-        </library>
-      </libraries>
+      <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails cms: production" uuid="514f9c18-69ca-4747-b3f7-14c239391866">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://10.250.250.103/xyz_cms</jdbc-url>
       <driver-properties>

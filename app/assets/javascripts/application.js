@@ -16,6 +16,31 @@
 // require_tree .
 
 $(document).ready(function() {
+
+    $.getJSON('/me.json', function(data, status) {
+        console.log(data);
+        var me_nav = $("#me");
+        //用户登陆
+        if (data['me_options'] != undefined) {
+            var me_options = data['me_options'];
+            console.log(me_options.current_user.logout);
+
+            me_nav.find(' > label').text(me_options.current_user.me);
+            me_nav.find(' > ul').append('<li><a href="/signout">' + me_options.current_user.logout +
+            '</a></li>');
+        } else {
+            //普通访问
+            var login_options = data['login_options'];
+
+            me_nav.find(' > label').text(login_options.login_options.login);
+            var me_option_ul = me_nav.find(' > ul');
+            me_option_ul.append('<li><a href="/signin">' + login_options.login_options.login +
+            '</a></li>');
+            me_option_ul.append('<li><a href="/signup">' + login_options.login_options.register +
+            '</a></li>');
+        }
+    });
+
     //navigations
     $(".navigation > ul > li").not(":last").hover(
         function() {
@@ -28,7 +53,7 @@ $(document).ready(function() {
     //me
     $(".navigation ul li#me").click(
         function() {
-            $(this).find('#me_options').slideToggle('slow');
+            $(this).find('#me_options').slideToggle();
         }
     );
 
@@ -82,9 +107,9 @@ function categories_and_articles_view(data) {
 
     //articles
     $.each(data['articles'].articles, function(i, item) {
-        var row = '<tr><td class="title">' + '<a href="#">' + item.title + '</a>' + '</td>' +
+        var row = '<tr><td class="title">' + '<a href="/articles/' + item.id + '">' + item.title + '</a>' + '</td>' +
             '<td class="category">' + item.category + '</td>' +
-            '<td class="time">' + item.time + '</td>';
+            '<td class="time">' + item.created_on + '</td>';
         if (item.author != undefined) {
             row += '<td class="author">' + item.author + '</td></tr>';
         }
@@ -92,6 +117,19 @@ function categories_and_articles_view(data) {
     });
 
     $('tr:even').not(':first').css('background-color', 'whitesmoke');
+}
+
+function fill_selectable_categories_options(categories) {
+
+    var selectable_categories = $(".selectable_categories");
+    console.log(categories.cgs);
+
+    $.each(categories.cgs, function(i, item){
+        selectable_categories.append('<option value="' + item.id + '">' + item.c + '</option>');
+        if (item.cgs != undefined) {
+            fill_selectable_categories_options(item);
+        }
+    });
 }
 
 

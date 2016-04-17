@@ -33,3 +33,18 @@ en:
   field_registe_failure_hint: 注册失败
   field_login_success_hint: 登录成功
   field_login_failure_hint: 登录失败
+  field_signin_first: 请先登陆
+  field_logout_successfully: 退出成功
+  field_create_category_successfully_hint: 类别创建成功
+  field_create_category_failure_hint: 类别创建失败
+  label_create_article_successfully: 创建文章成功
+  label_create_article_failure: 创建文章失败
+
+  label_me: 我
+
+  label_category_name: 类别名称
+  label_category_description: 类别描述
+  label_category_parent: 父类别
+  label_create: 创建
+
+  label_new_article: 新建文章

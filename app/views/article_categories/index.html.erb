@@ -6,7 +6,26 @@
     </div>
 
     <!-- 文章详情 -->
-    <div>
+    <div class="category_articles">
+      <form action="/article_categories/" method="post">
+        <div>
+          <div><%= localize_var(:label_category_name) %></div>
+          <input type="text" name="category[name]"　id="category_name"/>
+        </div>
+        <div id="category_description">
+          <div><%= localize_var(:label_category_description) %></div>
+          <textarea name="category[description]" id="category_description"></textarea>
+        </div>
+        <div>
+          <div><%= localize_var(:label_category_parent) %></div>
+          <select class="selectable_categories" name="category[parent]" id="category_description">
+            <option id="default">------</option>
+          </select>
+        </div>
+        <div id="create_category">
+          <input id="submit_category_info" type="submit" value=<%= localize_var(:label_create)%> />
+        </div>
+      </form>
     </div>
   </div>
 </div>
