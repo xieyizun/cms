@@ -2,6 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Rails cms: development" uuid="38411e16-41c4-40fc-b24f-f84a012ea7a1">
+      <user-name>janyu</user-name>
+      <user-password>dfd8dfcfdfcedfc7dfc3dfc4dfcf</user-password>
       <schema-pattern>xyz_cms.*</schema-pattern>
       <default-schemas>xyz_cms.*</default-schemas>
     </data-source>

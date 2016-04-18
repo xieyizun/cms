@@ -4,6 +4,7 @@ Cms::Application.routes.draw do
   get "home", to: "homes#index", as: "home"
   get "categories", to: "article_categories#index", as: "categories"
   get "articles", to: "articles#index", as: "articles"
+  get "page", to: "articles#page", as: "page"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

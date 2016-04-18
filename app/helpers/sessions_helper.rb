@@ -26,4 +26,11 @@ module SessionsHelper
       redirect_to signin_path, notice: localize_var(:field_signin_first)
     end
   end
+
+  def inspect_if_is_admin
+    unless current_user.is_admin
+      puts localize_var(:field_only_admin_can_op)
+      render :text => localize_var(:field_only_admin_can_op)
+    end
+  end
 end

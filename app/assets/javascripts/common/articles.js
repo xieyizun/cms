@@ -3,7 +3,6 @@ var div_articles_html = null;
 $(document).ready(function() {
     $.getJSON("/articles.json", function(data, status) {
         categories_and_articles_view(data);
-        //console.log(data['articles']);
 
         $("div#new_article").delegate('input','click', function(){
             var div_articles = $("div#reuseable_area");

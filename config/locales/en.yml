@@ -38,6 +38,7 @@ en:
   field_logout_successfully: 'logout successfully'
   label_create_article_successfully: 'create article successfully'
   label_create_article_failure: 'create article failure'
+  field_only_admin_can_op: 'only admin can operate article category'
 
   label_me: 'Me'
 

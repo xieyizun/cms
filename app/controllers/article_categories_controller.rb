@@ -1,4 +1,8 @@
 class ArticleCategoriesController < ApplicationController
+
+  before_filter :inspect_if_sign_in
+  before_filter :inspect_if_is_admin
+
   def index
     # id, c_name, children(cgs)
     cgs = ArticleCategory.get_json_tree_of_categories

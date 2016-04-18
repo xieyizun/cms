@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="navigation">
+    <ul id="ops">
+      <li>
+        <a href="/home"><%= localize_var(:label_home) %></a>
+      </li>
+      <li>
+        <a href="/categories"><%= localize_var(:label_article_categories) %></a>
+      </li>
+      <li>
+        <a href="/articles"><%= localize_var(:label_articles) %></a>
+      </li>
+      <li>
+        <a href="#"><%= localize_var(:label_contact) %></a>
+      </li>
+      <li id="me">
+        <label></label>
+        <ul id="me_options">
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

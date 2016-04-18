@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     if user.save
       flash[:success] = localize_var(:field_registe_success_hint)
-      sign_in(user)
+      #疑问
+      @user = User.find_by_id(user.id)
+      sign_in(@user)
       redirect_to home_path
     else
       flash[:error] = localize_var(:field_registe_failure_hint)

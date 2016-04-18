@@ -39,6 +39,7 @@ en:
   field_create_category_failure_hint: 类别创建失败
   label_create_article_successfully: 创建文章成功
   label_create_article_failure: 创建文章失败
+  field_only_admin_can_op: 只有管理员才能进行类别管理
 
   label_me: 我
 
