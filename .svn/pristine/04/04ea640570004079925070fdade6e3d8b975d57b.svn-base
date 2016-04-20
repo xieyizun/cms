@@ -1,0 +1,17 @@
+<div class="user_form">
+  <form id="login_form" action="/sessions/" method="post">
+    <ul>
+      <li>
+        <p><%= localize_var(:label_login_name_or_email) %></p>
+        <input type="text" name="session[name_or_email]"/>
+      </li>
+      <li>
+        <p><%= localize_var(:label_password) %></p>
+        <input type="password" name="session[password]"/>
+      </li>
+      <li>
+        <button id="login"><%= localize_var(:label_login) %></button>
+      </li>
+    </ul>
+  </form>
+</div>

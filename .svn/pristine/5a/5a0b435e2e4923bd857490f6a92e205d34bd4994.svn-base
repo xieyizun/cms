@@ -1,0 +1,25 @@
+<div class="user_form">
+  <form id="register_form" action="/users/" method="post">
+    <ul>
+      <li>
+        <p><%= localize_var(:label_name) %></p>
+        <input type="text" name="user[name]"/>
+      </li>
+      <li>
+        <p><%= localize_var(:label_email) %></p>
+        <input type="text" name="user[email]"/>
+      </li>
+      <li>
+        <p><%= localize_var(:label_password) %></p>
+        <input type="password" name="user[password]"/>
+      </li>
+      <li>
+        <p><%= localize_var(:label_password_confirmation) %></p>
+        <input type="password" name="user[password_confirmation]"/>
+      </li>
+      <li>
+        <button id="register"><%= localize_var(:label_register) %></button>
+      </li>
+    </ul>
+  </form>
+</div>
