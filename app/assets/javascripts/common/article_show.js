@@ -10,7 +10,6 @@ $(document).ready(function(){
         var others = $("div#others");
         if (data['edit_option'] != undefined) {
             others.append('<div><a href="/articles/' + data['edit_option'] + '/edit"' + '>编辑</a></div>');
-            debugger
             others.append('<div><a href="/articles/' + data['edit_option'] + '">删除</a></div>');
         }
 

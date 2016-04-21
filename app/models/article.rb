@@ -4,7 +4,8 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :content, :view_count, :created_on, :category_id, :user_id
 
   belongs_to :user
-  belongs_to :category, class_name: 'ArticleCategory', foreign_key: 'category_id'
+  # belongs_to :category, class_name: 'ArticleCategory', foreign_key: 'category_id'
+  belongs_to :category
 
   validates_presence_of :title, :content, :user_id, :category_id
 

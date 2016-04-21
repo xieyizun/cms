@@ -22,16 +22,15 @@ class ArticleCategory < ActiveRecord::Base
   end
 
   def self.update_category_from_params(id, category_params)
+
     category = ArticleCategory.find(id)
-    if category.update_attributes(category_params)
-      true
-    else
-      false
-    end
+    rescue ActiveRecord::RecordNotFound
+
+    category.update_attributes(category_params)
   end
 
   def self.get_category_detail_by_id(id)
-    category = ArticleCategory.find(id)
+    category = ArticleCategory.find_by_id(id)
     category_json = category.as_json
 
     unless category.parent_id.nil?
@@ -50,7 +49,6 @@ class ArticleCategory < ActiveRecord::Base
       $redis.set("categories", categories)
     end
     categories
-
   end
 
   def self.build_json_tree_of_categories(parent_categories)

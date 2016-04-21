@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160413073242) do
+ActiveRecord::Schema.define(:version => 20160421025701) do
 
   create_table "article_categories", :force => true do |t|
     t.integer "parent_id"
@@ -23,13 +23,25 @@ ActiveRecord::Schema.define(:version => 20160413073242) do
     t.integer  "user_id",     :default => 0,  :null => false
     t.integer  "category_id", :default => 0,  :null => false
     t.string   "title",       :default => "", :null => false
-    t.text     "content",     :default => "", :null => false
+    t.text     "content",                     :null => false
     t.integer  "view_count",  :default => 0,  :null => false
     t.datetime "created_on",                  :null => false
   end
 
   add_index "articles", ["category_id"], :name => "articles_category_id"
   add_index "articles", ["user_id"], :name => "articles_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string  "name",        :limit => 50, :default => "", :null => false
+    t.text    "description"
+    t.integer "lft",                       :default => 0,  :null => false
+    t.integer "rgt",                       :default => 0,  :null => false
+    t.integer "level",                     :default => 0,  :null => false
+  end
+
+  add_index "categories", ["level"], :name => "index_categories_on_level"
+  add_index "categories", ["lft"], :name => "index_categories_on_lft"
+  add_index "categories", ["rgt"], :name => "index_categories_on_rgt"
 
   create_table "users", :force => true do |t|
     t.string  "email",           :limit => 50,                    :null => false

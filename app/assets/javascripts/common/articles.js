@@ -25,7 +25,7 @@ $(document).ready(function() {
         $("div#new_article").delegate('input','click', function(){
             var div_articles = $("div#reuseable_area");
             div_articles.html(new_article_html());
-            fill_selectable_categories_options(data['categories']);
+            fillSelectableCategoriesOptions(data);
         });
 
         $("div.container").delegate('button', 'click', function() {

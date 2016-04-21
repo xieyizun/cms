@@ -7,6 +7,7 @@ var display_first = 0;
 
 $(document).ready(function() {
     $.getJSON("/home.json", function(data, status) {
+
         categories_and_articles_view(data);
 
         //主页实现分页

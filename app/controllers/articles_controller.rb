@@ -8,20 +8,21 @@ class ArticlesController < ApplicationController
       format.json {
         #返回不指定类别的文章
         if params[:category_id].blank?
-          cgs = ArticleCategory.get_json_tree_of_categories
-          categories = { cgs: cgs }
+          # cgs = ArticleCategory.get_json_tree_of_categories
+          # categories = { cgs: cgs }
+          cgs, max_level = Category.get_categories_json_tree
 
           #主页文章列表
           if params[:current_user].blank?
             articles = { articles: Article.get_latest_articles }
             articles_pages_count = Article.get_articles_pages_count
-            render :json => { :categories => categories, :articles => articles, :pages_count => articles_pages_count }
+            render :json => { :categories => cgs, :max_level => max_level, :articles => articles, :pages_count => articles_pages_count }
           else
           #个人页文章列表
             ats_json, articles_pages_count = Article.get_my_articles_and_articles_count(current_user)
             # to_json会返回字符串，as_json返回实际的json数组
             articles = { articles: ats_json }
-            render :json => { :categories => categories, :articles => articles, :pages_count => articles_pages_count }
+            render :json => { :categories => cgs, :max_level => max_level, :articles => articles, :pages_count => articles_pages_count }
           end
 
         #返回指定类别的文章

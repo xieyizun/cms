@@ -4,12 +4,12 @@ var categories = null;
 $(document).ready(function() {
     $.getJSON('/categories.json', function(data, status) {
         //articles categories
-        var parent = $("#categories");
+        //var parent = $("#categories");
 
-        categories = data['categories'];
-        console.log(categories);
+        //categories = data['categories'];
 
-        multi_categories(data['categories'], parent, false);
+        //multi_categories(data['categories'], parent, false);
+        multilCategories2(data, false);
 
         var categories_main_ul = $("#categories > ul");
         categories_main_ul.find("li:first").before('<li>类别列表</li>').parent().find('li:first').css('background-color', 'lightblue');
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
         //填充可选的父类别
         if (data['categories'] != undefined) {
-            fill_selectable_categories_options(data['categories']);
+           fillSelectableCategoriesOptions(data);
         }
 
         //articles categories click event
@@ -77,19 +77,19 @@ function category_detail_html(category) {
                 '<textarea name="category[description]" id="category_description">' + category.description + '</textarea>' +
             '</div>';
 
-        if (category.parent_id != null) {
-            var parent_html = '<div><div>父类别</div>' +
-                    '<select class="selectable_categories" name="category[parent_id]">' +
-                        '<option value="' + category.parent_id + '">' + category.parent_name + '</option>' +
-                    '</select></div>';
-            detail_html += parent_html;
-        } else {
-            var parent_html = '<div><div>父类别</div>' +
+ /*   if (category.parent_id != null) {
+        var parent_html = '<div><div>父类别</div>' +
+            '<select class="selectable_categories" name="category[parent_id]">' +
+            '<option value="' + category.parent_id + '">' + category.parent_name + '</option>' +
+            '</select></div>';
+        detail_html += parent_html;
+    } else {*/
+        var parent_html = '<div><div>父类别</div>' +
                 '<select class="selectable_categories" name="category[parent_id]" id="category_description">' +
                 '<option>-----</option>' +
                 '</select></div>';
-            detail_html += parent_html;
-        }
+        detail_html += parent_html;
+
 
         var update_submit = '<div id="update_category">' +
                 '<input type="submit" id="update_category_info" value="更新"' + '/>' +

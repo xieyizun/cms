@@ -8,5 +8,6 @@
 
 
 100.times do |n|
-  Article.create(title: (n+1000).to_s, content: (n+300).to_s, category_id: 3, user_id: 1, created_on: Time.now)
+  Article.create(title: '计算机'+(n).to_s, content: '计算机'+(n).to_s, category_id: 2, user_id: 1, created_on: Time.now)
+  Article.create(title: 'web'+(n).to_s, content: 'web'+(n).to_s, category_id: 6, user_id: 1, created_on: Time.now)
 end

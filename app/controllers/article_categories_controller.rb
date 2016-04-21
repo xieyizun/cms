@@ -5,16 +5,28 @@ class ArticleCategoriesController < ApplicationController
 
   def index
     # id, c_name, children(cgs)
-    cgs = ArticleCategory.get_json_tree_of_categories
+    # cgs = ArticleCategory.get_json_tree_of_categories
+    cgs, max_level = Category.get_categories_json_tree
 
-    categories = { cgs: cgs }
+    # categories = { cgs: cgs }
 
     respond_to do |format|
-      format.json { render :json => { :categories => categories } }
+      format.json { render :json => { :categories => cgs, :max_level => max_level } }
       format.html
     end
   end
 
+  def detail
+    respond_to do |format|
+      format.json {
+        category = Category.get_category_detail_by_id(params[:category_id])
+        render :json => { category: category }
+      }
+    end
+  end
+
+
+=begin
   def detail
     respond_to do |format|
       format.json {
@@ -24,13 +36,26 @@ class ArticleCategoriesController < ApplicationController
     end
   end
 
+
   def create
+
     if params[:category][:parent] =~ /^-/
       params[:category][:parent] = nil
     end
 
     if ArticleCategory.create_category_from_params(params[:category][:name], params[:category][:description],
                                    params[:category][:parent])
+      flash[:success] = localize_var(:field_create_category_successfully_hint)
+      redirect_to categories_path
+    else
+      flash[:failure] = localize_var(:field_create_category_failure_hint)
+      redirect_to categories_path
+    end
+=end
+
+  def create
+    if Category.create_or_update_category_by_params(params[:category][:name], params[:category][:description],
+                                          params[:category][:parent])
       flash[:success] = localize_var(:field_create_category_successfully_hint)
       redirect_to categories_path
     else
@@ -45,12 +70,25 @@ class ArticleCategoriesController < ApplicationController
   def edit
   end
 
+=begin
   def update
     if params[:category][:parent_id] =~ /^-/
       params[:category][:parent_id] = nil
     end
 
     if ArticleCategory.update_category_from_params(params[:id], params[:category])
+      flash[:success] = localize_var(:field_update_category_successfully_hint)
+      redirect_to categories_path
+    else
+      flash[:failure] = localize_var(:field_update_category_failure_hint)
+      redirect_to categories_path
+    end
+  end
+=end
+
+  def update
+    if Category.update_category_from_params(params)
+
       flash[:success] = localize_var(:field_update_category_successfully_hint)
       redirect_to categories_path
     else

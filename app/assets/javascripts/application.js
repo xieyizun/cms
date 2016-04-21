@@ -98,6 +98,53 @@ function multi_categories(categories, parent, show_articles) {
     });
 }
 
+function multilCategories2(data, showArticles) {
+    var categories = data['categories'];
+    var maxLevel = parseInt(data['max_level']);
+
+    var categoriesDiv = $("#categories");
+    categoriesDiv.append('<ul id="1"></ul>');
+
+    for (var i=1; i <= maxLevel; i++) {
+        var childrenCategories = categories[i];
+
+        for (var j = 0; j < childrenCategories.length; j++) {
+            var category = childrenCategories[j];
+
+            var categoryLi = null;
+
+            if (category.has_children == true) {
+                categoryLi = '<li value="' + category.id + '">' +
+                    '<img class="li_event" src="/assets/downlist.png" />'  + category.name;
+
+                if (showArticles) {
+                    var img = '<img class="show_articles" src="/assets/articles.png" />' + '<ul id="' + category.id + '"></ul></li>';
+                    categoryLi += img;
+                } else {
+                    var img = '<img class="show_category" src="/assets/show_category.png" />' + '<ul id="' + category.id + '"></ul></li>';
+                    categoryLi += img;
+                }
+
+            } else {
+                categoryLi = '<li value="' + category.id + '">' +
+                    '<img class="li_event" src="/assets/downlist.png" />'  + category.name;
+
+                if (showArticles) {
+                    categoryLi += '<img class="show_articles" src="/assets/articles.png" />' + '</li>';
+                } else {
+                    categoryLi += '<img class="show_category" src="/assets/show_category.png" />' + '</li>'
+                }
+
+            }
+
+            //寻找父节点
+            var parent_ul = $('div#categories ul[id="' + category.parent_id + '"]');
+
+            parent_ul.append(categoryLi);
+        }
+    }
+}
+
 function show_category_children() {
     $(".li_event").on('click', function() {
         if ($(this).siblings()) {
@@ -106,6 +153,7 @@ function show_category_children() {
             } else {
                 $(this).attr('src', '/assets/downlist.png');
             }
+
             $(this).siblings().not(":first").slideToggle();
         }
         //放置当前事件往上传到父类
@@ -146,9 +194,11 @@ function show_articles_of_category(url, current_user, current_page, display_firs
 
 function categories_and_articles_view(data) {
 
-    //articles categories
-    var parent = $("#categories");
-    multi_categories(data['categories'], parent, true);
+    // articles categories
+    // var parent = $("#categories");
+    // multi_categories(data['categories'], parent, true);
+
+    multilCategories2(data, true);
 
     var categories_main_ul = $("#categories > ul");
     categories_main_ul.find("li:first").before('<li>类别列表</li>').parent().find('li:first').css('background-color', 'lightblue');
@@ -171,6 +221,21 @@ function fill_selectable_categories_options(categories) {
             fill_selectable_categories_options(item);
         }
     });
+}
+
+function fillSelectableCategoriesOptions(data) {
+    var categories = data['categories'];
+    var maxLevel = parseInt(data['max_level']);
+
+    var selectable_categories = $(".selectable_categories");
+
+    for (var i = 1; i <= maxLevel; i++) {
+        var cgs = categories[i.toString()];
+        for (var j = 0; j < cgs.length; j++) {
+            var c = cgs[j];
+            selectable_categories.append('<option value="' + c.id + '">' + c.name + '</option>');
+        }
+    }
 }
 
 function fill_articles_view(articles) {

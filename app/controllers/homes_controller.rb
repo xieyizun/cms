@@ -22,11 +22,14 @@ class HomesController < ApplicationController
       format.json {
         #返回不指定类别的文章
         if params[:category_id].blank?
-          cgs = ArticleCategory.get_json_tree_of_categories
-          categories = {cgs: cgs}
+          # cgs = ArticleCategory.get_json_tree_of_categories
+          # categories = {cgs: cgs}
+
+          cgs, max_level = Category.get_categories_json_tree
+
           articles = {articles: Article.get_latest_articles}
           articles_pages_count = Article.get_articles_pages_count
-          render :json => {:categories => categories, :articles => articles, :pages_count => articles_pages_count}
+          render :json => { :categories => cgs, :max_level => max_level,  :articles => articles, :pages_count => articles_pages_count}
           #返回指定类别的文章
         else
           #主页某一类别文章
