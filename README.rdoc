@@ -1,261 +1,114 @@
-== Welcome to Rails
+. 安装软件之后，首先：export PATH=$PATH:/usr/sbin/，然后通过ln -s xxx（可执行文件路径) /usr/sbin/，这样就可以直接使用使用命令了。
 
-Rails is a web-application framework that includes everything needed to create
-database-backed web applications according to the Model-View-Control pattern.
+2.部署rails应用到nginx
+(1) 在rails应用中，使用rake db:migrate RAILS_ENV=production，进行数据库迁移
+(2) 编译静态资源，包括样式，js等，RAILS_ENV=production rake assets:precompile
+因为服务器通常直接使用这些编译好的静态资源
+参考：http://guides.ruby-china.org/asset_pipeline.html
+(3) 使用ln将rails应用的public目录链接到nginx的html目录下，如
+先使用scp命令拷贝本地文件到服务器上
 
-This pattern splits the view (also called the presentation) into "dumb"
-templates that are primarily responsible for inserting pre-built data in between
-HTML tags. The model contains the "smart" domain objects (such as Account,
-Product, Person, Post) that holds all the business logic and knows how to
-persist themselves to a database. The controller handles the incoming requests
-(such as Save New Account, Update Product, Show Post) by manipulating the model
-and directing data to the view.
+sudo ln -s /home/xieyizun/rails_project/bbs3/public/ /usr/local/nginx/html/bbs
+(4) 修改/usr/local/nginx/config/nginx.conf文件，完成配置
+参考：http://www.blogjava.net/pengpenglin/archive/2011/11/13/363643.html
 
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
+3.redis数据类型：字符串，列表，哈希，集合，有序集合
+4.mysql: 客户端->连接管理器->线程管理器->命令调度器->(查询即SQL语句->解析器,命令不用通过解析器)->优化器，表管理器..->抽象存储引擎
 
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails. You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
+
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
 
-== Getting Started
 
-1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
-
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
-
-4. Follow the guidelines to start developing your application. You can find
-the following resources handy:
-
-* The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
-* Ruby on Rails Tutorial Book: http://www.railstutorial.org/
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
 
-== Debugging Rails
 
-Sometimes your application goes wrong. Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-First area to check is the application log files. Have "tail -f" commands
-running on the server.log and development.log. Rails will automatically display
-debugging and runtime information to these files. Debugging info will also be
-shown in the browser on requests from 127.0.0.1.
-
-You can also log your own messages directly into the log file from your code
-using the Ruby logger class from inside your controllers. Example:
-
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
-
-The result will be a message in your log file along the lines of:
-
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1!
-
-More information on how to use the logger is at http://www.ruby-doc.org/core/
-
-Also, Ruby documentation can be found at http://www.ruby-lang.org/. There are
-several books available online as well:
-
-* Programming Ruby: http://www.ruby-doc.org/docs/ProgrammingRuby/ (Pickaxe)
-* Learn to Program: http://pine.fm/LearnToProgram/ (a beginners guide)
-
-These two books will bring you up to speed on the Ruby language and also on
-programming in general.
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
 
-== Debugger
 
-Debugger support is available through the debugger command when you start your
-Mongrel or WEBrick server with --debugger. This means that you can break out of
-execution at any point in the code, investigate and change the model, and then,
-resume execution! You need to install ruby-debug to run the server in debugging
-mode. With gems, use <tt>sudo gem install ruby-debug</tt>. Example:
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.all
-      debugger
-    end
-  end
-
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
-
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8
-          @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>,
-       #<Post:0x14a6620
-          @attributes={"title"=>"Rails", "body"=>"Only ten..", "id"=>"2"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
-
-...and even better, you can examine how your runtime objects actually work:
-
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
-
-Finally, when you're ready to resume execution, you can enter "cont".
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
 
-== Console
 
-The console is a Ruby shell, which allows you to interact with your
-application's domain model. Here you'll have all parts of the application
-configured, just like it is when the application is running. You can inspect
-domain models, change values, and save to the database. Starting the script
-without arguments will launch it in the development environment.
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-To start the console, run <tt>rails console</tt> from the application
-directory.
-
-Options:
-
-* Passing the <tt>-s, --sandbox</tt> argument will rollback any modifications
-  made to the database.
-* Passing an environment name as an argument will load the corresponding
-  environment. Example: <tt>rails console production</tt>.
-
-To reload your controllers and models after launching the console run
-<tt>reload!</tt>
-
-More information about irb can be found at:
-link:http://www.rubycentral.org/pickaxe/irb.html
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
 
-== dbconsole
 
-You can go to the command line of your database directly through <tt>rails
-dbconsole</tt>. You would be connected to the database with the credentials
-defined in database.yml. Starting the script without arguments will connect you
-to the development database. Passing an argument will connect you to a different
-database, like <tt>rails dbconsole production</tt>. Currently works for MySQL,
-PostgreSQL and SQLite 3.
+4.表锁：在数据库服务器层实现，如LOCK TABLES,UNLOCK TABLES
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-== Description of Contents
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
-The default directory structure of a generated Ruby on Rails application:
 
-  |-- app
-  |   |-- assets
-  |   |   |-- images
-  |   |   |-- javascripts
-  |   |   `-- stylesheets
-  |   |-- controllers
-  |   |-- helpers
-  |   |-- mailers
-  |   |-- models
-  |   `-- views
-  |       `-- layouts
-  |-- config
-  |   |-- environments
-  |   |-- initializers
-  |   `-- locales
-  |-- db
-  |-- doc
-  |-- lib
-  |   |-- assets
-  |   `-- tasks
-  |-- log
-  |-- public
-  |-- script
-  |-- test
-  |   |-- fixtures
-  |   |-- functional
-  |   |-- integration
-  |   |-- performance
-  |   `-- unit
-  |-- tmp
-  |   `-- cache
-  |       `-- assets
-  `-- vendor
-      |-- assets
-      |   |-- javascripts
-      |   `-- stylesheets
-      `-- plugins
 
-app
-  Holds all the code that's specific to this particular application.
+4.表锁
+行锁：InnoDB,XtraDB,在存储引擎层实现，在mysql数据库服务层没有实现
 
-app/assets
-  Contains subdirectories for images, stylesheets, and JavaScript files.
+5.事务：一组原子性的sql查询，要么全部执行，要么全部不执行。原子性，一致性，隔离性，持久性，即ACID。一个实现了ACID的数据库，需要更强的CPU处理能力，更强的内存和更多的磁盘空间。不用事务的查询类应用，应该使用非事务型的存储引擎，可以获得更高的性能。
 
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from
-  ApplicationController which itself descends from ActionController::Base.
+6.隔离级别：READ UNCOMMITED, READ COMMITED, REPEATED READ, SERIALIZE
+安全性依次增加，性能依次减少，mysql的隔离级别为REPEATED READ；SERIALIZE在需要高度确保数据一致性和可以接受没有并发的情况下使用。
 
-app/models
-  Holds models that should be named like post.rb. Models descend from
-  ActiveRecord::Base by default.
+7.死锁：两个或多个事务在同一资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环。当多个事务试图以不同的顺序锁定资源时，就可能会产生死锁。
+死锁检查和死锁超时机制解决死锁，innodb处理死锁的方法：将持有最少行级排它锁的事务进行回滚，大多数情况下只需要重新执行因死锁回滚的事务。
+锁的行为和顺序和存储引擎有关，同样的执行顺序，有的存储引擎可能死锁，有的可能不会。
+死锁原因：数据冲突；存储引擎的实现方式
 
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use
-  eRuby syntax by default.
+8.MYSQL提供的事务型引擎：InnoDB,NDB Cluster
+mysql设置事务隔离级别：SET TRANSACTION ISOLATION LEVEL (如 READ COMMITTED)
+mysql支持四个ANSI的隔离级别，Innodb支持所有的隔离级别。
 
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the
-  common header/footer method of wrapping views. In your views, define a layout
-  using the <tt>layout :default</tt> and create a file named default.html.erb.
-  Inside default.html.erb, call <% yield %> to render the view using this
-  layout.
+9.多并发版本控制：mysql大多数事务型引擎都不是简单的行级锁，基于提升性能的考虑，一般都同时实现了多版本并发控制。
+实现：通过保存数据在某个时间点的快照来实现的。不管执行多长时间，每个事物所看到的数据是一样的，不同的事务，启动时间不同，对同一张表看到的数据可能不一样。
 
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are
-  generated for you automatically when using generators for controllers.
-  Helpers can be used to wrap functionality for your views into methods.
+innodb实现：在每行记录后面保存两个隐藏的列来实现，行的创建时间，行的过期（删除）时间；保存的时间不是实际的值，而是系统版本号，每开始一个新的事物，系统版本号就递增。读操作不用加锁，操作简单，性能好，缺点就是需要额外的空间来保存这两行。
 
-config
-  Configuration files for the Rails environment, the routing map, the database,
-  and other dependencies.
+MVCC只在REPEATED READ,READ COMMITTED两个隔离级别使用
 
-db
-  Contains the database schema in schema.rb. db/migrate contains all the
-  sequence of Migrations for your schema.
+10.存储引擎
+表的定义：使用文件系统的目录和文件来保存库和表的定义。
+查看表的定义：show table status；（或者加上like匹配)
+InnoDB:支持事务和崩溃后自动恢复，但是占用空间较多
+表存储在表空间，表空间由一系列的数据文件组成。表基于聚簇索引实现，聚簇索引对主键查询有很高的性能。
+除非万不得已，否则不要混合使用多个存储引擎。
+选择innodb引擎：（1）事务支持（2）热备份（3）崩溃恢复（4）聚簇索引
+转换存储引擎语句：ALTER TABLE xxx ENGINE = InnoDB; 注意点：时间长，锁表，如索引之类的特性丢失
 
-doc
-  This directory is where your application documentation will be stored when
-  generated using <tt>rake doc:app</tt>
 
-lib
-  Application specific libraries. Basically, any kind of custom code that
-  doesn't belong under controllers, models, or helpers. This directory is in
-  the load path.
+11.选择优化的数据类型
+（1）更小的通常更好，能正确存储数据的最小数据类型
+（2）简单最好，如整形代替字符串，日期代替字符串，整形存储ip，使用MySQL的内建数据类型，如date,datetime,time
+（3）尽量避免使用NULL,通常情况下应该指定NOT NULL，NULL会占用更多的存储空间，并且null的列对应索引，索引统计和值比较都比较困难。
+步骤：选择大类型，如数字，字符串，时间等；选择具体类型，如时间选好后，确定具体类型，datetime和timestamp都可以选择，但是timestamp不仅存储空间只用datetime的一半，而且具有特殊的自动更新能力，另一方面timestamp允许的时间范围要小得多；确定值的范围长度等
 
-public
-  The directory available for the web server. Also contains the dispatchers and the
-  default HTML files. This should be set as the DOCUMENT_ROOT of your web
-  server.
+12.数据类型
+整数类型：TINYINT,SMALLINT,MEDIUMINT,INT,BIGINT;8,16,24,...位存储空间
+无符号UNSIGNED,有符号和无符合占用相同的存储空间，具有相同的性能，只是数据范围不同。使用如INT(1),INT(10)不会限制值的合法范围，对存储和计算是相同的，只是在交互工具中用来显示字符的个数。
 
-script
-  Helper scripts for automation and generation.
+实数类型：带有小数的数字，FLOAT,DOUBLE,DECIMAL,DECIMAL用于存储精确的小数，支持精确计算。cpu不支持DECIMAL的高精度计算，而是由mysql服务器实现，所以浮点运算明显更快。建议：只指定数据类型，不指定精度，考虑到额外的空间和计算开销，尽量只在对小数进行精度计算时才使用decimal，如存储财务数据。当数据量比较大时，考虑使用BIGINT代替DECIMAL，这样可以同时避免float计算不精确和decimal精度计算代价高的问题。
 
-test
-  Unit and functional tests along with fixtures. When using the rails generate
-  command, template test files will be generated for you and placed in this
-  directory.
-
-vendor
-  External libraries that the application depends on. Also includes the plugins
-  subdirectory. If the app has frozen rails, those gems also go here, under
-  vendor/rails/. This directory is in the load path.
+字符类型：VARCHAR, CHAR,存储与具体存储引擎实现相关
+VARCHAR存储可变长字符串，需要使用1或2个额外字节记录字符串的长度,仅使用必要空间，比定长节省了存空间。使用情况：字符串的最大长度比平均长度大得多；列更新少；使用了像utf8这样的字符编码。
+VARCHAR(5)和VARCHAR(200)存储"hello"的空间开销一样，但是长的会消耗更多的内存，所以只分配真正需要的空间。
+CHAR:存储很短的字符串，列更新多，如md5
+BINARY,VARBINARY: 二进制字符串，与CHAR, VARCHAR的不同点是，存储的是字节码而不是字符；二进制比较比字符比较简单更多，所以更快。
+BLOB,TEXT:存储很大的数据的字符串数据类型，分别采用二进制和字符方式存储。
+TINYBLOB, TINYTEXT....
+由于BLOB,TEXT太大了，MySQL会特殊处理，innodb会使用专门的外部区域来存储。
+BLOB存储的是二进制，没有排序规则或字符集，而text有字符集和排序规则。mysql不能讲blob或者text的全部长度的字符串进行索引
